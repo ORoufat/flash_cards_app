@@ -6,7 +6,7 @@ BACKGROUND_COLOR = "#B1DDC6"
 current_card = {}
 to_learn = {}
 
-'''We created a variable named data to read the csv file.
+'''Creating a variable named data to read the csv file.
 Then converted the csv into a dictionary called "to_learn" because it is easier to work with dictionary'''
 try:
     data = pandas.read_csv("data/words_to_learn.csv")
@@ -22,7 +22,7 @@ else:
 '''Creating an empty dictionary to store randomly chosen words in here temporarily '''
 
 
-'''Creating Next Function to go to the next card'''
+'''This Function is to go to the next card'''
 def next():
     global current_card, flip_timer
     window.after_cancel(flip_timer)
@@ -40,7 +40,7 @@ def flip():
     canvas.itemconfig(card_word, text=current_card['English'], fill="white")
     canvas.itemconfig(card_background, image=card_back)
 
-
+'''This function removes the known words from the french_words list and saves the remaining words in to words_to_learn list'''
 def known():
     to_learn.remove(current_card)
     data = pandas.DataFrame(to_learn)
